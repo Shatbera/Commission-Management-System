@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum HotelStatus {
+  STANDARD
+  PREFERRED
+}
+
+model Hotel {
+  id        String      @id @default(uuid())
+  name      String      @unique
+  status    HotelStatus @default(STANDARD)
+
+  @@index([status])
+  @@map("hotels")
+}
+
+
+

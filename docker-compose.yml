@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: commission_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: commission
+    ports:
+      - "5433:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
